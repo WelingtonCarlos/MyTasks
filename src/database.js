@@ -51,7 +51,11 @@ export class Database {
     if (rowIndex === -1) {
       return false;
     } else {
-      this.#database[table][rowIndex] = { id, ...data };
+      this.#database[table][rowIndex] = {
+        id,
+        ...this.#database[table][rowIndex],
+        ...data,
+      };
       this.#persist();
       return true;
     }
